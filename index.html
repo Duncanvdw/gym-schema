@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Gym schema</title>
+</head>
+<body>
+    <div class="flex justify-center items-top h-screen">
+        <div class="mt-10">
+            <div class="flex items-center flex-col">
+                <h1 class="text-[100px]">Gym schema</h1>
+                <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-24" onclick="openModal(event)">Begin nu!</button>
+            </div>
+
+            <!-- het schema -->
+             <div id="schema" class="flex justify-center items-center flex-col">
+             </div>
+
+            <!-- Modal -->
+            <div class="flex justify-center">
+                <div class="w-[80%] h-[80vh] bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 hidden" id="modal">
+                    <div class="slideContainer">
+                        <label class="text-2xl mt-10">Hoe veel oefeningen wil je doen?</label>
+                        <input type="range" name="tijd" id="aantalOefeningen" class="w-full mt-4" min="1" max="12" step="1" value="6">
+                        <span id="demo"></span>
+                    </div>
+                    <div class="welkeSpieren mt-10">
+                        <label for="spieren" class="text-2xl">Welke spieren wil je trainen?</label><br>
+                        <div class="flex justify-around mt-4 w-[70%]">
+                            <select class="mx-2" name="spieren" id="spier1">
+                                <option value="biceps">Biceps</option>
+                                <option value="triceps">Triceps</option>
+                                <option value="borst">Borst</option>
+                                <option value="rug">Rug</option>
+                                <option value="schouders">Schouders</option>
+                                <option value="benen">Benen</option>
+                                <option value="billen">Billen</option>
+                                <option value="buik">Buik</option>
+                                <option value="cardio">Cardio</option>
+                            </select>
+                            <select class="mt-2" name="spieren" id="spier2">
+                                <option value="biceps">Biceps</option>
+                                <option value="triceps">Triceps</option>
+                                <option value="borst">Borst</option>
+                                <option value="rug">Rug</option>
+                                <option value="schouders">Schouders</option>
+                                <option value="benen">Benen</option>
+                                <option value="billen">Billen</option>
+                                <option value="buik">Buik</option>
+                                <option value="cardio">Cardio</option>
+                                <option value="-">-</option>
+                            </select>
+                            <select class="mt-2" name="spieren" id="spier3">
+                                <option value="biceps">Biceps</option>
+                                <option value="triceps">Triceps</option>
+                                <option value="borst">Borst</option>
+                                <option value="rug">Rug</option>
+                                <option value="schouders">Schouders</option>
+                                <option value="benen">Benen</option>
+                                <option value="billen">Billen</option>
+                                <option value="buik">Buik</option>
+                                <option value="cardio">Cardio</option>
+                                <option value="-">-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hoeveelPerSpier flex flex-col mt-10">
+                        <p class="text-2xl">Hoeveel oefeningen wil je doen per spier?</p>
+                        <div class="flex justify-around mt-4 w-[70%]">
+                            <div class="flex flex-col items-center">
+                                <label for="hoeveel1"><span id="nummer1" class="text-[20px]"></span></label>
+                                <input type="number" name="hoeveel1" id="hoeveel1" class="w-10 mt-2" value="2">
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <label for="hoeveel2"><span id="nummer2" class="text-[20px]"></span></label>
+                                <input type="number" name="hoeveel2" id="hoeveel2" class="w-10 mt-2" value="2">
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <label for="hoeveel3"><span id="nummer3" class="text-[20px]"></span></label>
+                                <input type="number" name="hoeveel3" id="hoeveel3" class="w-10 mt-2" value="2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letsGo">
+                        <button type="submit" onclick="maakSchema()" class="mt-10 p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-28">Let's Gooo!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
