@@ -1,3 +1,52 @@
+// Define the oefeningen object globally
+const oefeningen = {
+    biceps: [
+        { naam: "Hammer curl", link: "https://www.youtube.com/watch?v=zC3nLlEvin4&t=23s&ab_channel=ScottHermanFitness", uitleg: "Houd een dumbbell in elke hand met een neutrale grip. Buig je ellebogen en breng de gewichten omhoog tot schouderhoogte. Laat ze langzaam zakken en herhaal. Zorg ervoor dat je polsen recht blijven en je ellebogen dicht bij je lichaam blijven." },
+        { naam: "Barbell curl", link: "https://www.youtube.com/watch?v=kwG2ipFRgfo&ab_channel=Howcast", uitleg: "Pak een barbell vast met een onderhandse grip. Buig je ellebogen om de barbell omhoog te brengen tot schouderhoogte. Laat de barbell gecontroleerd zakken. Houd je rug recht en je ellebogen stabiel." },
+        { naam: "Preacher curl", link: "https://www.youtube.com/watch?v=02TvQZiVdic&ab_channel=Men%27sHealth", uitleg: "Gebruik een preacher bench om je armen te ondersteunen. Voer gecontroleerde biceps curls uit door de barbell of dumbbell omhoog te brengen en langzaam te laten zakken. Zorg ervoor dat je volledige bewegingsvrijheid gebruikt." }
+    ],
+    triceps: [
+        { naam: "Tricep pushdown", link: "https://www.youtube.com/watch?v=2-LAMcpzODU&ab_channel=ScottHermanFitness", uitleg: "Gebruik een kabelmachine met een rechte of V-vormige stang. Strek je ellebogen volledig terwijl je de stang naar beneden duwt. Houd je bovenarmen dicht bij je lichaam en je polsen recht." },
+        { naam: "Overhead tricep extension", link: "https://www.youtube.com/watch?v=-Vyt2QdsR7E&ab_channel=ScottHermanFitness", uitleg: "Houd een dumbbell met beide handen vast boven je hoofd. Buig je ellebogen om de dumbbell achter je hoofd te laten zakken. Strek je armen weer omhoog. Zorg ervoor dat je ellebogen naar voren wijzen en je rug recht blijft." },
+        { naam: "Skullcrusher", link: "https://www.youtube.com/watch?v=d_KZxkY_0cM&ab_channel=ScottHermanFitness", uitleg: "Lig op een bankje en houd een EZ-bar vast met een onderhandse grip. Buig je ellebogen om de bar naar je voorhoofd te laten zakken. Strek je armen weer omhoog. Houd je bovenarmen stil en je ellebogen op dezelfde plaats." }
+    ],
+    borst: [
+        { naam: "Bench press", link: "https://www.youtube.com/watch?v=0cXAp6WhSj4&ab_channel=JeremyEthier", uitleg: "Lig op een bankje en duw een barbell omhoog vanaf je borst. Laat de barbell gecontroleerd zakken tot je borst en duw hem weer omhoog. Houd je voeten plat op de grond en je rug licht gebogen." },
+        { naam: "Dumbell press", link: "https://www.youtube.com/watch?v=1V3vpcaxRYQ&ab_channel=DavisDiley", uitleg: "Lig op een bankje en duw twee dumbbells omhoog vanaf je borst. Laat de dumbbells gecontroleerd zakken tot je borst en duw ze weer omhoog. Houd je polsen recht en je ellebogen iets naar buiten." },
+        { naam: "Cable Fly", link: "https://www.youtube.com/watch?v=Iwe6AmxVf7o", uitleg: "Gebruik een kabelmachine om je armen naar elkaar toe te brengen in een vliegbeweging. Houd je ellebogen licht gebogen en je handen op dezelfde hoogte als je borst. Breng de handgrepen langzaam terug naar de startpositie." }
+    ],
+    rug: [
+        { naam: "Lat pulldown", link: "https://www.youtube.com/watch?v=AOpi-p0cJkc&ab_channel=SilverSneakers", uitleg: "Gebruik een lat pulldown machine om de stang naar je borst te trekken. Houd je handen op schouderbreedte en je rug recht. Laat de stang gecontroleerd terug omhoog gaan." },
+        { naam: "Pull-ups", link: "https://www.youtube.com/watch?v=ZPG8OsHKXLw&ab_channel=JeremyEthierShorts", uitleg: "Gebruik een pull-up bar om je lichaam omhoog te trekken totdat je kin boven de bar is. Houd je handen op schouderbreedte en je benen gestrekt. Laat je lichaam gecontroleerd zakken." },
+        { naam: "Cable row", link: "https://www.youtube.com/watch?v=GZbfZ033f74", uitleg: "Gebruik een kabelmachine om de handgreep naar je middel te trekken. Houd je rug recht en je knieën licht gebogen. Laat de handgreep gecontroleerd teruggaan naar de startpositie." }
+    ],
+    schouders: [
+        { naam: "Shoulder press", link: "https://www.youtube.com/watch?v=qEwKCR5JCog&ab_channel=ScottHermanFitness", uitleg: "Duw een barbell of dumbbells omhoog vanaf je schouders. Laat de gewichten gecontroleerd zakken tot je schouders en duw ze weer omhoog. Houd je rug recht en je knieën licht gebogen." },
+        { naam: "Lateral raise", link: "https://www.youtube.com/watch?v=geenhiHju-o&ab_channel=LIVESTRONG.COM", uitleg: "Houd dumbbells vast en til je armen zijwaarts op tot schouderhoogte. Laat de gewichten gecontroleerd zakken. Houd je ellebogen licht gebogen en je polsen recht." },
+        { naam: "Face pull", link: "https://www.youtube.com/watch?v=eFxMixk_qPQ&ab_channel=Men%27sHealth", uitleg: "Gebruik een kabelmachine om de handgreep naar je gezicht te trekken. Houd je ellebogen hoog en je schouderbladen samen. Laat de handgreep gecontroleerd teruggaan naar de startpositie." }
+    ],
+    benen: [
+        { naam: "Squat", link: "https://www.youtube.com/watch?v=MLoZuAkIyZI&ab_channel=DavisDiley", uitleg: "Buig je knieën en heupen om je lichaam te laten zakken en kom weer omhoog. Houd je rug recht en je knieën boven je voeten. Duw jezelf omhoog door je hielen in de grond te duwen." },
+        { naam: "Leg press", link: "https://www.youtube.com/watch?v=nDh_BlnLCGc&ab_channel=JeffNippard", uitleg: "Gebruik een leg press machine om je benen te strekken tegen weerstand. Houd je voeten op schouderbreedte en je knieën licht gebogen. Laat de gewichten gecontroleerd zakken en duw ze weer omhoog." },
+        { naam: "Leg extension", link: "https://www.youtube.com/watch?v=YyvSfVjQeL0&ab_channel=ScottHermanFitness", uitleg: "Gebruik een leg extension machine om je knieën te strekken tegen weerstand. Houd je rug tegen de rugleuning en je knieën op dezelfde hoogte als de draaipunt van de machine. Laat de gewichten gecontroleerd zakken en strek je benen weer." }
+    ],
+    billen: [
+        { naam: "Hip thrust", link: "https://www.youtube.com/watch?v=Zp26q4BY5HE&ab_channel=GirlsGoneStrong", uitleg: "Lig met je bovenrug op een bankje en duw je heupen omhoog met een barbell over je heupen. Houd je knieën gebogen en je voeten plat op de grond. Laat je heupen gecontroleerd zakken en duw ze weer omhoog." },
+        { naam: "Abductor", link: "https://www.youtube.com/watch?v=h3eHvBqwnJQ&ab_channel=FIT.nl", uitleg: "Gebruik een abductor machine om je benen zijwaarts te bewegen tegen weerstand. Houd je rug recht en je knieën licht gebogen. Laat de gewichten gecontroleerd teruggaan naar de startpositie." },
+        { naam: "Glute bridge", link: "https://www.youtube.com/watch?v=pUPrP05DvCE", uitleg: "Lig op je rug met gebogen knieën en duw je heupen omhoog. Houd je voeten plat op de grond en je schouderbladen tegen de grond. Laat je heupen gecontroleerd zakken en duw ze weer omhoog." }
+    ],
+    buik: [
+        { naam: "Crunch", link: "https://www.youtube.com/watch?v=DxYpFbYBPR0", uitleg: "Lig op je rug en buig je bovenlichaam omhoog richting je knieën. Houd je handen achter je hoofd en je ellebogen naar buiten. Laat je bovenlichaam gecontroleerd zakken." },
+        { naam: "Leg raise", link: "https://www.youtube.com/watch?v=JB2oyawG9KI&ab_channel=LIVESTRONG.COM", uitleg: "Lig op je rug en til je benen omhoog tot een hoek van 90 graden. Houd je benen gestrekt en je handen onder je heupen. Laat je benen gecontroleerd zakken." },
+        { naam: "Russian twist", link: "https://www.youtube.com/watch?v=wkD8rjkodUI", uitleg: "Zit op de grond met gebogen knieën en draai je bovenlichaam van links naar rechts. Houd je handen samen en je voeten van de grond. Draai je bovenlichaam gecontroleerd." }
+    ],
+    cardio: [
+        { naam: "Hardlopen", link: "https://www.youtube.com/watch?v=brFHyOtTwH4", uitleg: "Ren op een loopband of buiten om je hartslag te verhogen. Houd een gelijkmatig tempo aan en adem diep in en uit." },
+        { naam: "Fietsen", link: "https://www.youtube.com/watch?v=GyLlw1CgXf8", uitleg: "Gebruik een hometrainer of fiets buiten om je hartslag te verhogen. Houd een gelijkmatig tempo aan en adem diep in en uit." },
+        { naam: "Roeien", link: "https://www.youtube.com/watch?v=H0r_ZPXJLtg", uitleg: "Gebruik een roeimachine om je hartslag te verhogen. Houd je rug recht en je knieën licht gebogen. Trek de handgreep naar je borst en laat hem gecontroleerd teruggaan." }
+    ]
+};
+
 function openModalSchema(event) {
     event.stopPropagation();
     const modal = document.getElementById('modalSchema');
@@ -17,69 +66,26 @@ document.addEventListener('click', (event) => {
 });
 
 function populateOefeningenTable() {
-    const oefeningen = {
-        biceps: [
-            { naam: "Hammer curl", uitleg: "Houd een dumbbell in elke hand met een neutrale grip. Buig je ellebogen en breng de gewichten omhoog tot schouderhoogte. Laat ze langzaam zakken en herhaal. Zorg ervoor dat je polsen recht blijven en je ellebogen dicht bij je lichaam blijven." },
-            { naam: "Barbell curl", uitleg: "Pak een barbell vast met een onderhandse grip. Buig je ellebogen om de barbell omhoog te brengen tot schouderhoogte. Laat de barbell gecontroleerd zakken. Houd je rug recht en je ellebogen stabiel." },
-            { naam: "Preacher curl", uitleg: "Gebruik een preacher bench om je armen te ondersteunen. Voer gecontroleerde biceps curls uit door de barbell of dumbbell omhoog te brengen en langzaam te laten zakken. Zorg ervoor dat je volledige bewegingsvrijheid gebruikt." }
-        ],
-        triceps: [
-            { naam: "Tricep pushdown", uitleg: "Gebruik een kabelmachine met een rechte of V-vormige stang. Strek je ellebogen volledig terwijl je de stang naar beneden duwt. Houd je bovenarmen dicht bij je lichaam en je polsen recht." },
-            { naam: "Overhead tricep extension", uitleg: "Houd een dumbbell met beide handen vast boven je hoofd. Buig je ellebogen om de dumbbell achter je hoofd te laten zakken. Strek je armen weer omhoog. Zorg ervoor dat je ellebogen naar voren wijzen en je rug recht blijft." },
-            { naam: "Skullcrusher", uitleg: "Lig op een bankje en houd een EZ-bar vast met een onderhandse grip. Buig je ellebogen om de bar naar je voorhoofd te laten zakken. Strek je armen weer omhoog. Houd je bovenarmen stil en je ellebogen op dezelfde plaats." }
-        ],
-        borst: [
-            { naam: "Bench press", uitleg: "Lig op een bankje en duw een barbell omhoog vanaf je borst. Laat de barbell gecontroleerd zakken tot je borst en duw hem weer omhoog. Houd je voeten plat op de grond en je rug licht gebogen." },
-            { naam: "Dumbell press", uitleg: "Lig op een bankje en duw twee dumbbells omhoog vanaf je borst. Laat de dumbbells gecontroleerd zakken tot je borst en duw ze weer omhoog. Houd je polsen recht en je ellebogen iets naar buiten." },
-            { naam: "Cable Fly", uitleg: "Gebruik een kabelmachine om je armen naar elkaar toe te brengen in een vliegbeweging. Houd je ellebogen licht gebogen en je handen op dezelfde hoogte als je borst. Breng de handgrepen langzaam terug naar de startpositie." }
-        ],
-        rug: [
-            { naam: "Lat pulldown", uitleg: "Gebruik een lat pulldown machine om de stang naar je borst te trekken. Houd je handen op schouderbreedte en je rug recht. Laat de stang gecontroleerd terug omhoog gaan." },
-            { naam: "Pull-ups", uitleg: "Gebruik een pull-up bar om je lichaam omhoog te trekken totdat je kin boven de bar is. Houd je handen op schouderbreedte en je benen gestrekt. Laat je lichaam gecontroleerd zakken." },
-            { naam: "Cable row", uitleg: "Gebruik een kabelmachine om de handgreep naar je middel te trekken. Houd je rug recht en je knieën licht gebogen. Laat de handgreep gecontroleerd teruggaan naar de startpositie." }
-        ],
-        schouders: [
-            { naam: "Shoulder press", uitleg: "Duw een barbell of dumbbells omhoog vanaf je schouders. Laat de gewichten gecontroleerd zakken tot je schouders en duw ze weer omhoog. Houd je rug recht en je knieën licht gebogen." },
-            { naam: "Lateral raise", uitleg: "Houd dumbbells vast en til je armen zijwaarts op tot schouderhoogte. Laat de gewichten gecontroleerd zakken. Houd je ellebogen licht gebogen en je polsen recht." },
-            { naam: "Face pull", uitleg: "Gebruik een kabelmachine om de handgreep naar je gezicht te trekken. Houd je ellebogen hoog en je schouderbladen samen. Laat de handgreep gecontroleerd teruggaan naar de startpositie." }
-        ],
-        benen: [
-            { naam: "Squat", uitleg: "Buig je knieën en heupen om je lichaam te laten zakken en kom weer omhoog. Houd je rug recht en je knieën boven je voeten. Duw jezelf omhoog door je hielen in de grond te duwen." },
-            { naam: "Leg press", uitleg: "Gebruik een leg press machine om je benen te strekken tegen weerstand. Houd je voeten op schouderbreedte en je knieën licht gebogen. Laat de gewichten gecontroleerd zakken en duw ze weer omhoog." },
-            { naam: "Leg extension", uitleg: "Gebruik een leg extension machine om je knieën te strekken tegen weerstand. Houd je rug tegen de rugleuning en je knieën op dezelfde hoogte als de draaipunt van de machine. Laat de gewichten gecontroleerd zakken en strek je benen weer." }
-        ],
-        billen: [
-            { naam: "Hip thrust", uitleg: "Lig met je bovenrug op een bankje en duw je heupen omhoog met een barbell over je heupen. Houd je knieën gebogen en je voeten plat op de grond. Laat je heupen gecontroleerd zakken en duw ze weer omhoog." },
-            { naam: "Abductor", uitleg: "Gebruik een abductor machine om je benen zijwaarts te bewegen tegen weerstand. Houd je rug recht en je knieën licht gebogen. Laat de gewichten gecontroleerd teruggaan naar de startpositie." },
-            { naam: "Glute bridge", uitleg: "Lig op je rug met gebogen knieën en duw je heupen omhoog. Houd je voeten plat op de grond en je schouderbladen tegen de grond. Laat je heupen gecontroleerd zakken en duw ze weer omhoog." }
-        ],
-        buik: [
-            { naam: "Crunch", uitleg: "Lig op je rug en buig je bovenlichaam omhoog richting je knieën. Houd je handen achter je hoofd en je ellebogen naar buiten. Laat je bovenlichaam gecontroleerd zakken." },
-            { naam: "Leg raise", uitleg: "Lig op je rug en til je benen omhoog tot een hoek van 90 graden. Houd je benen gestrekt en je handen onder je heupen. Laat je benen gecontroleerd zakken." },
-            { naam: "Russian twist", uitleg: "Zit op de grond met gebogen knieën en draai je bovenlichaam van links naar rechts. Houd je handen samen en je voeten van de grond. Draai je bovenlichaam gecontroleerd." }
-        ],
-        cardio: [
-            { naam: "Hardlopen", uitleg: "Ren op een loopband of buiten om je hartslag te verhogen. Houd een gelijkmatig tempo aan en adem diep in en uit." },
-            { naam: "Fietsen", uitleg: "Gebruik een hometrainer of fiets buiten om je hartslag te verhogen. Houd een gelijkmatig tempo aan en adem diep in en uit." },
-            { naam: "Roeien", uitleg: "Gebruik een roeimachine om je hartslag te verhogen. Houd je rug recht en je knieën licht gebogen. Trek de handgreep naar je borst en laat hem gecontroleerd teruggaan." }
-        ]
-    };
-
     const table = document.querySelector("#modalOefeningen table");
     table.innerHTML = `
         <tr>
-            <th>Spier(groep)</th>
             <th>Oefening</th>
             <th>Uitleg</th>
         </tr>
     `;
 
     Object.entries(oefeningen).forEach(([spier, oefeningenLijst]) => {
+        const headerRow = document.createElement("tr");
+        const headerCell = document.createElement("th");
+        headerCell.colSpan = 2;
+        headerCell.innerText = spier.charAt(0).toUpperCase() + spier.slice(1);
+        headerRow.appendChild(headerCell);
+        table.appendChild(headerRow);
+
         oefeningenLijst.forEach((oefening) => {
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${spier}</td>
-                <td>${oefening.naam}</td>
+                <td><a href="${oefening.link}" target="_blank">${oefening.naam}</a></td>
                 <td>${oefening.uitleg}</td>
             `;
             table.appendChild(row);
@@ -237,18 +243,6 @@ function maakSchema() {
     let hoeveel2 = parseInt(document.getElementById("hoeveel2").value);
     let hoeveel3 = parseInt(document.getElementById("hoeveel3").value);
 
-    const oefeningen = {
-        biceps: ["Hammer curl", "Barbell curl", "Preacher curl"],
-        triceps: ["Tricep pushdown", "Overhead tricep extension", "Skullcrusher"],
-        borst: ["Bench press", "Dumbell press", "Cable Fly"],
-        rug: ["Lat pulldown", "Pull-ups", "Cable row"],
-        schouders: ["Shoulder press", "Lateral raise", "Face pull"],
-        benen: ["Squat", "Leg press", "Leg extension"],
-        billen: ["Hip thrust", "Abductor", "Glute bridge"],
-        buik: ["Crunch", "Leg raise", "Russian twist"],
-        cardio: ["Hardlopen", "Fietsen", "Roeien"]
-    };
-
     let hoeveelBijElkaar = hoeveel1 + hoeveel2 + hoeveel3;
     if (hoeveelBijElkaar !== parseInt(aantalOefeningen)) {
         alert("Het aantal oefeningen moet gelijk zijn aan het aantal sets!");
@@ -270,7 +264,7 @@ function maakSchema() {
         const oefeningDiv = document.createElement("div");
         oefeningDiv.innerHTML = `
             <div class="text-[20px] font-semibold mt-4">
-                <p class="">${index + 1}. ${oefening}</p>
+                <p>${index + 1}. <a href="${oefening.link}" target="_blank">${oefening.naam}</a></p>
             </div>
         `;
         schemaDiv.appendChild(oefeningDiv);
