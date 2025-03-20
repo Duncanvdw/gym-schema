@@ -270,3 +270,114 @@ function maakSchema() {
         schemaDiv.appendChild(oefeningDiv);
     });
 }
+
+function openModalRecords(event) {
+    event.stopPropagation();
+    const modal = document.getElementById('modalRecords');
+    modal.classList.remove('hidden');
+
+    // Load and display records from local storage
+    const recordsList = document.getElementById("recordsList");
+    const records = JSON.parse(localStorage.getItem("gymRecords")) || [];
+    displayRecords(recordsList, records);
+}
+
+function closeModalRecords() {
+    const modal = document.getElementById('modalRecords');
+    modal.classList.add('hidden');
+}
+
+document.addEventListener('click', (event) => {
+    const modal = document.getElementById('modalRecords');
+    if (!modal.classList.contains('hidden') && !modal.contains(event.target)) {
+        closeModalRecords();
+    }
+});
+
+function saveRecords() {
+    const input = document.getElementById("records");
+    const recordsList = document.getElementById("recordsList");
+
+    // Get existing records from local storage or initialize an empty array
+    const records = JSON.parse(localStorage.getItem("gymRecords")) || [];
+
+    // Add the new record if the input is not empty
+    if (input.value.trim() !== "") {
+        records.push(input.value.trim());
+        localStorage.setItem("gymRecords", JSON.stringify(records)); // Save updated records to local storage
+        input.value = ""; // Clear the input field
+    }
+
+    // Update the displayed records
+    displayRecords(recordsList, records);
+}
+
+function displayRecords(recordsList, records) {
+    // Clear the current list
+    recordsList.innerHTML = "";
+
+    // Add each record as a list item
+    records.forEach((record, index) => {
+        const recordItem = document.createElement("div");
+        recordItem.className = "mt-2 text-[16px] flex items-center justify-between";
+
+        // Record text
+        const recordText = document.createElement("span");
+        recordText.innerText = record;
+        recordText.className = "flex-grow";
+
+        // Add double-click event to edit the record
+        recordText.addEventListener("dblclick", () => {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = record;
+            input.className = "w-[70%] h-8 mt-2 border border-gray-300 rounded";
+
+            // Replace the record text with the input field
+            recordItem.innerHTML = "";
+            recordItem.appendChild(input);
+
+            // Save the updated record on blur or Enter key
+            const saveUpdatedRecord = () => {
+                const updatedValue = input.value.trim();
+                if (updatedValue) {
+                    records[index] = updatedValue; // Update the record in the array
+                    localStorage.setItem("gymRecords", JSON.stringify(records)); // Save updated records to local storage
+                    displayRecords(recordsList, records); // Refresh the displayed records
+                }
+            };
+
+            input.addEventListener("blur", saveUpdatedRecord);
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    saveUpdatedRecord();
+                }
+            });
+
+            input.focus(); // Focus on the input field
+        });
+
+        // Trashcan icon
+        const deleteIcon = document.createElement("button");
+        deleteIcon.innerHTML = "🗑️";
+        deleteIcon.className = "ml-4 text-red-500 hover:text-red-700";
+        deleteIcon.addEventListener("click", () => {
+            records.splice(index, 1); // Remove the record from the array
+            localStorage.setItem("gymRecords", JSON.stringify(records)); // Update local storage
+            displayRecords(recordsList, records); // Refresh the displayed records
+        });
+
+        // Append text and delete icon to the record item
+        recordItem.appendChild(recordText);
+        recordItem.appendChild(deleteIcon);
+
+        recordsList.appendChild(recordItem);
+    });
+}
+
+// Load and display records on page load
+window.addEventListener("load", () => {
+    const recordsList = document.getElementById("recordsList");
+    const records = JSON.parse(localStorage.getItem("gymRecords")) || [];
+    displayRecords(recordsList, records);
+});

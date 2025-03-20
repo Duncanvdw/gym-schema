@@ -36,12 +36,34 @@
             </div>
 
             <!-- het schema -->
-             <div id="schema" class="flex justify-center items-center flex-col">
-             </div>
+            <div class="flex justify-center">
+                <div id="schema" class="flex justify-center text-left items-start flex-col"></div>
+            </div>
+
+            <div class="mt-10 flex justify-center">
+                <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-40" onclick="openModalRecords(event)">Records</button>
+            </div>
+
+            <!-- Persoonlijke records bijhouden -->
+            <div class="flex justify-center">
+                <div class="w-[95%] h-[90%] overflow-x-hidden max-h-[90%] overflow-y-auto bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 pt-0 hidden" id="modalRecords">
+                    <div class="slideContainer">
+                        <div class="flex flex-row items-center justify-between mt-10">
+                            <p class="text-2xl">Schrijf hier je doelen of records op</p>
+                            <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg h-10 w-24" onclick="closeModalRecords()">Sluiten</button>
+                        </div>
+                    </div>
+                    <div class="hoeveelPerSpier flex flex-col mt-10">
+                        <input type="text" name="records" id="records" class="w-[70%] h-10 mt-2" placeholder="Schrijf hier je records op">
+                        <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-24 mt-2" onclick="saveRecords()">Opslaan</button>
+                        <div id="recordsList" class="mt-4"></div> <!-- Container for displaying records -->
+                    </div>
+                </div>
+            </div>
 
             <!-- Modal schema maken -->
             <div class="flex justify-center">
-                <div class="w-[95%] h-[80%] overflow-x-hidden max-h-[80%] overflow-y-auto bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 pt-0 hidden" id="modalSchema">
+                <div class="w-[95%] h-[90%] overflow-x-hidden max-h-[90%] overflow-y-auto bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 pt-0 hidden" id="modalSchema">
                     <div class="slideContainer">
                         <div class="flex flex-row justify-between">
                             <label class="text-2xl mt-10">Hoe veel oefeningen wil je doen?</label>
@@ -117,6 +139,7 @@
                         <h1 class="text-2xl">Alle oefeningen</h1>
                         <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-24" onclick="closeModalOefeningen()">Sluiten</button>
                     </div>
+                    <p class="text-15px">Klik op de oefening voor uitleg<br>(Kan ook in het schema)</p>
                     <table class="mt-4">
                         <tr>
                             <th>Spier(groep)</th>
