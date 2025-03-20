@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
     <title>Gym schema</title>
 </head>
 <body>
@@ -12,19 +29,25 @@
         <div class="mt-10">
             <div class="flex items-center flex-col">
                 <h1 class="text-[100px]">Gym schema</h1>
-                <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-24" onclick="openModal(event)">Begin nu!</button>
+                <div class="">
+                    <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-24" onclick="openModalSchema(event)">Begin nu!</button>
+                    <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-40" onclick="openModalOefeningen(event)">Zie alle oefeningen</button>
+                </div>
             </div>
 
             <!-- het schema -->
              <div id="schema" class="flex justify-center items-center flex-col">
              </div>
 
-            <!-- Modal -->
+            <!-- Modal schema maken -->
             <div class="flex justify-center">
-                <div class="w-[80%] h-[80vh] bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 hidden" id="modal">
+                <div class="w-[80%] h-auto bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 hidden" id="modalSchema">
                     <div class="slideContainer">
-                        <label class="text-2xl mt-10">Hoe veel oefeningen wil je doen?</label>
-                        <input type="range" name="tijd" id="aantalOefeningen" class="w-full mt-4" min="1" max="12" step="1" value="6">
+                        <div class="flex flex-row justify-between">
+                            <label class="text-2xl mt-10">Hoe veel oefeningen wil je doen?</label>
+                            <button type="submit" onclick="maakSchema()" class="mt-10 p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-28">Let's Gooo!</button>
+                        </div>
+                            <input type="range" name="tijd" id="aantalOefeningen" class="w-full mt-4" min="1" max="12" step="1" value="6">
                         <span id="demo"></span>
                     </div>
                     <div class="welkeSpieren mt-10">
@@ -84,14 +107,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="letsGo">
-                        <button type="submit" onclick="maakSchema()" class="mt-10 p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-28">Let's Gooo!</button>
+                </div>
+            </div>
+
+            <!-- Modal alle oefeningen -->
+            <div class="flex justify-center items-center">
+                <div class="w-[80%] max-h-[80vw] overflow-y-auto bg-white fixed top-10 border border-solid border-1 rounded-lg shadow-lg p-4 hidden" id="modalOefeningen">
+                    <div class="flex justify-between">
+                        <h1 class="text-2xl">Alle oefeningen</h1>
+                        <button class="p-2 bg-blue-500 border border-solid border-1 text-white rounded-lg w-24" onclick="closeModalOefeningen()">Sluiten</button>
                     </div>
+                    <table class="mt-4">
+                        <tr>
+                            <th>Spier(groep)</th>
+                            <th>Oefening</th>
+                            <th>Uitleg</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
-
 </body>
 </html>
