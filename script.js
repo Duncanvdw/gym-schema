@@ -280,6 +280,11 @@ function openModalRecords(event) {
     const recordsList = document.getElementById("recordsList");
     const records = JSON.parse(localStorage.getItem("gymRecords")) || [];
     displayRecords(recordsList, records);
+
+    // Load and display doelen from local storage
+    const doelenList = document.getElementById("doelenList");
+    const doelen = JSON.parse(localStorage.getItem("gymDoelen")) || [];
+    displayDoelen(doelenList, doelen);
 }
 
 function closeModalRecords() {
@@ -380,4 +385,92 @@ window.addEventListener("load", () => {
     const recordsList = document.getElementById("recordsList");
     const records = JSON.parse(localStorage.getItem("gymRecords")) || [];
     displayRecords(recordsList, records);
+});
+
+function saveDoelen() {
+    const input = document.getElementById("doelen");
+    const doelenList = document.getElementById("doelenList");
+
+    // Get existing records from local storage or initialize an empty array
+    const doelen = JSON.parse(localStorage.getItem("gymDoelen")) || [];
+
+    // Add the new record if the input is not empty
+    if (input.value.trim() !== "") {
+        doelen.push(input.value.trim());
+        localStorage.setItem("gymDoelen", JSON.stringify(doelen)); // Save updated records to local storage
+        input.value = ""; // Clear the input field
+    }
+
+    // Update the displayed records
+    displayDoelen(doelenList, doelen);
+}
+
+function displayDoelen(doelenList, doelen) {
+    // Clear the current list
+    doelenList.innerHTML = "";
+
+    // Add each doel as a list item
+    doelen.forEach((doel, index) => {
+        const doelenItem = document.createElement("div");
+        doelenItem.className = "mt-2 text-[16px] flex items-center justify-between";
+
+        // Doel text
+        const doelenText = document.createElement("span");
+        doelenText.innerText = doel;
+        doelenText.className = "flex-grow";
+
+        // Add double-click event to edit the doel
+        doelenText.addEventListener("dblclick", () => {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = doel;
+            input.className = "w-[70%] h-8 mt-2 border border-gray-300 rounded";
+
+            // Replace the doel text with the input field
+            doelenItem.innerHTML = "";
+            doelenItem.appendChild(input);
+
+            // Save the updated doel on blur or Enter key
+            const saveUpdatedDoelen = () => {
+                const updatedValue = input.value.trim();
+                if (updatedValue) {
+                    doelen[index] = updatedValue; // Update the doel in the array
+                    localStorage.setItem("gymDoelen", JSON.stringify(doelen)); // Save updated doelen to local storage
+                    displayDoelen(doelenList, doelen); // Refresh the displayed doelen
+                }
+            };
+
+            input.addEventListener("blur", saveUpdatedDoelen);
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    saveUpdatedDoelen();
+                }
+            });
+
+            input.focus(); // Focus on the input field
+        });
+
+        // Trashcan icon
+        const deleteIcon = document.createElement("button");
+        deleteIcon.innerHTML = "🗑️";
+        deleteIcon.className = "ml-4 text-red-500 hover:text-red-700";
+        deleteIcon.addEventListener("click", () => {
+            doelen.splice(index, 1); // Remove the doel from the array
+            localStorage.setItem("gymDoelen", JSON.stringify(doelen)); // Update local storage
+            displayDoelen(doelenList, doelen); // Refresh the displayed doelen
+        });
+
+        // Append text and delete icon to the doelen item
+        doelenItem.appendChild(doelenText);
+        doelenItem.appendChild(deleteIcon);
+
+        doelenList.appendChild(doelenItem);
+    });
+}
+
+// Load and display records on page load
+window.addEventListener("load", () => {
+    const doelenList = document.getElementById("doelenList");
+    const doelen = JSON.parse(localStorage.getItem("gymDoelen")) || [];
+    displayDoelen(doelenList, doelen);
 });
